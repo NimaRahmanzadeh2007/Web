@@ -15,6 +15,8 @@ button.onclick = function () {
 
     const random = Math.floor(Math.random()*colors.length);
 
-    document.body.style.backgroundColor = colors[random];
+    document.body.style.backgroundColor = colors[random]
+
+    
 
 }
