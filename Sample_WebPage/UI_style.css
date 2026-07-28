@@ -1,0 +1,369 @@
+body {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+body #header {
+    margin-left: 0 50px;
+}
+
+#header {
+    width: auto;
+    height: 90px;
+    /* background-color: gray; */
+    display: flex;
+    gap: 40px;
+    /* margin-left: 30px; */
+}
+
+#loginbtn {
+    font-family: webFont;
+    background-color: black;
+    border-radius: 50px;
+    width: 80px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-top: 2.5px;
+}
+
+#mainDiv {
+    width: 100%;
+    height: fit-content;
+    /* background-color: green; */
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#leftPanel {
+    width: 49%;
+    height: 500px;
+    /* background-color: yellow; */
+}
+
+#rightPanel {
+    width: 49%;
+    height: 500px;
+    /* background-color: pink; */
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#options {
+    width: auto;
+    height: 10%;
+    /* background-color: darkred; */
+    margin-top: 20px;
+    padding-left: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#videoDiv {
+    width: fit-content;
+    height: fit-content;
+    /* background-color: lightyellow; */
+    margin-top: 10px;
+    /* display: flex; */
+    position: relative;
+    margin-right: 50px;
+}
+
+@font-face {
+    font-family: webFont;
+    src: url(WFVisualSans-SemiBold-aa0e55353b6a1b897f76a0fcbf5561fa243ce1b8b9f6aebcb5a186f0536713b1.woff2);
+}
+
+@font-face {
+    font-family: webFont2;
+    src: url(Mona-Sans-870dff5a10221ba7d01cc47eca10d0b2f911bd4196bb941985490bd8c7363cd9.woff2);
+}
+
+
+#font_1 {
+    font-family: webFont;
+}
+
+#option {
+    font-size: 10px;
+    font-family: webFont2;
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+#selectedOption {
+    font-size: 10px;
+    font-family: webFont2;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 20px;
+    padding: 7px;
+    border: 0.5px solid #d8d6d5;
+}
+
+.optionsBackground {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: fit-content;
+    padding-top: 3.5px;
+    padding-bottom: 7px;
+    padding-left: 1px;
+    padding-right: 1px;
+    background-color: #faf9fb;
+    border-radius: 20px;
+}
+
+.bigWord {
+    font-family: WebFont;
+    font-size: 65px;
+    /* background-color: gray; */
+}
+
+.bigWord p {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.checkList {
+    position: relative;
+    margin-left: 10px;
+    bottom: 20px;
+    justify-content: left;
+    display: flex;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.checkListText {
+    font-family: webFont;
+    font-size: 15px;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.blackButtonLocation {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.blackButton {
+    font-family: webFont;
+    background-color: black;
+    border-radius: 50px;
+    width: 80px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* margin: auto; */
+    margin-top: 2.5px;
+}
+
+.videoCreator {
+    width: fit-content;
+    height: 50px;
+    background-color: white;
+    padding: 5px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+}
+
+.videoPause {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    padding: 5px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.groups {
+    background-color: #ffffff;
+    border-radius: 50px;
+    width: 120px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+#groupsBar {
+    width: fit-content;
+    height: fit-content;
+    /* background-color: orange; */
+    margin-top: 80px;
+    display: flex;
+    gap: 30px;
+}
+
+.searchBar {
+    width: 97%;
+    height: 60px;
+    background-color: #f3f3f6;
+    border-radius: 50px;
+    margin-top: 20px;
+
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+
+}
+
+.searchBar input {
+    flex: 1;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    padding-left: 15px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.searchBarIcon {
+    width: 50px;
+    height: 50px;
+    background-color: #ea4c89;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.popularRow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0px 0px 25px;
+}
+
+.popular {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0 25px;
+    height: 35px;
+
+    border: 2px solid #eeeeef;
+    border-radius: 50px;
+    width: fit-content;
+}
+
+.popular p {
+    margin: 0;
+    /* <-- important */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.popularSpan {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.popularDropdown {
+    margin-left: auto;
+    width: fit-content;
+    height: 40px;
+    padding: 0px 25px 0px 20px;
+    border: 2px solid #eeeeef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 40px;
+    border-radius: 10px;
+}
+
+.popularDropdown p {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cardInfo {
+    width: 100%;
+    /* background-color: pink; */
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-left: 5px;
+}
+
+.cardInfo img {
+    border-radius: 50px;
+    width: 20px;
+}
+
+.cardInfo p,
+span {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+.cardInfoPro {
+    background-color: #ecebf0;
+    padding: 5px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.cardActions{
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-right: 10px;
+}
+
+.cardRight{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.cardRight img{
+    width: 12px;
+}
