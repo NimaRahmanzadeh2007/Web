@@ -8,7 +8,6 @@ h1, h2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-resolution: 20px;
 }
 
 h2{
