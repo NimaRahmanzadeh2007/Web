@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess The Number</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <h2>Guess The Number<br>(1 - 100)</h2>
+
+    <input oninput="this.value = this.value.replace(/\D+/g, '')" placeholder="Type here" id="input"><br>
+
+    <button class="button" id="btn">Check</button>
+
+    <p id="message"></p>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
