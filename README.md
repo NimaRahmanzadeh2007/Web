@@ -25,20 +25,6 @@ The purpose of this repository is to:
 - Improve my Git & GitHub workflow
 - Share my projects with others
 
-## 📂 Repository Structure
-
-```
-Web/
-│
-├── HTML/
-├── CSS/
-├── JavaScript/
-├── Projects/
-└── Assets/
-```
-
-> The structure will grow as I continue learning.
-
 ## 🚀 Technologies
 
 - HTML5
