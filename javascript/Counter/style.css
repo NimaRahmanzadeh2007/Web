@@ -1,8 +1,39 @@
 body {
-    background-color: gray;
+    background-color: black;
+}
+
+h1, h2 {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-resolution: 20px;
+}
+
+h2{
+    font-size: 70px;
 }
 
 .btn {
-    padding: 20px;
-    
+    padding: 30px;
+    font-size: 40px;
+    background-color: gainsboro;
+    border-radius: 50px;
+    border-width: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    transition: .2s;
+}
+
+.btn:active{
+    transform: scale(.9);
+    background-color: gray;
+}
+
+.container{
+    gap: 100px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
