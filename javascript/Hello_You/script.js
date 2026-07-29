@@ -6,7 +6,7 @@ let message = document.getElementById("message");
 
 btn.onclick = function () {
 
-    if (name.value != "") {
+    if (name.value !== "") {
         message.textContent = "Hello " + name.value + "!";
         name.value = "";
     }
