@@ -3,8 +3,7 @@ const input = document.getElementById("input");
 
 btn.addEventListener("click", function () {
 
-    if(input.value.trim() !== "")
-    {
+    if (input.value.trim() !== "") {
         const task = document.createElement("div")
         task.className = "task";
 
@@ -24,7 +23,7 @@ btn.addEventListener("click", function () {
 
         input.value = "";
     }
-    else{
+    else {
         window.alert("Please type a task first!");
     }
 
