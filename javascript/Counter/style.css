@@ -23,6 +23,7 @@ h2{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     transition: .2s;
+    cursor: pointer;
 }
 
 .btn:active{
