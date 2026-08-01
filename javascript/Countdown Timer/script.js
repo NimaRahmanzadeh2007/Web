@@ -21,7 +21,10 @@ function countdown() {
         second = 59;
     }
     else {
+        clearInterval(timer);
+        timeText.textContent = "00:00";
         alert("Time's up!");
+        return;
     }
 
     timeText.textContent = `${minute.toString().padStart(2, "0")}:${second.toString().padStart(2, "0")}`;
@@ -36,6 +39,9 @@ function countdownStart() {
     minute = Math.floor(totalSeconds / 60);
     second = totalSeconds % 60;
 
+    timeText.textContent =
+    `${minute.toString().padStart(2, "0")}:${second.toString().padStart(2, "0")}`;
+
     timer = setInterval(countdown, 1000);
 }
 
@@ -47,7 +53,12 @@ function countdownStop() {
 
 function countdownReset() {
 
+    clearInterval(timer);
 
+    minute = 0;
+    second = 0;
+
+    timeText.textContent = "00:00";
 
 
 }
