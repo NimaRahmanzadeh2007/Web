@@ -30,15 +30,28 @@ let timer;
 
 function stopwatchStart() {
     if (!timer) {
-        timer = setInterval(stopwatch, 10);
+        timer = setInterval(stopwatch, 1);
     }
 }
 function stopwatchStop() {
     clearInterval(timer);
     timer = null;
 }
+function stopwatchReset() {
+
+    clearInterval(timer)
+    timer = null;
+
+    centiseconds = 0;
+    seconds = 0;
+    minutes = 0;
+
+    timeText.textContent = "00:00:00";
+
+}
 
 startBtn.onclick = stopwatchStart;
 stopBtn.onclick = stopwatchStop;
+resetBtn.onclick = stopwatchReset;
 
 
