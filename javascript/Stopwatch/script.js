@@ -30,7 +30,7 @@ let timer;
 
 function stopwatchStart() {
     if (!timer) {
-        timer = setInterval(stopwatch, 1);
+        timer = setInterval(stopwatch, 10);
     }
 }
 function stopwatchStop() {
