@@ -12,11 +12,11 @@ function stopwatch() {
 
     centiseconds++;
 
-    if (centiseconds > 99) {
+    if (centiseconds >= 100) {
         centiseconds = 0;
         seconds += 1;
     }
-    if (seconds > 59) {
+    if (seconds >= 60) {
         seconds = 0;
         minutes += 1;
     }
@@ -39,7 +39,7 @@ function stopwatchStop() {
 }
 function stopwatchReset() {
 
-    clearInterval(timer)
+    clearInterval(timer);
     timer = null;
 
     centiseconds = 0;
