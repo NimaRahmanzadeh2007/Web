@@ -34,13 +34,16 @@ function countdown() {
 
 function countdownStart() {
 
-    totalSeconds = input.value.trim();
+
+    totalSeconds = parseInt(input.value.trim());
 
     minute = Math.floor(totalSeconds / 60);
     second = totalSeconds % 60;
 
     timeText.textContent =
-    `${minute.toString().padStart(2, "0")}:${second.toString().padStart(2, "0")}`;
+        `${minute.toString().padStart(2, "0")}:${second.toString().padStart(2, "0")}`;
+
+    input.value = "";
 
     timer = setInterval(countdown, 1000);
 }
@@ -48,12 +51,13 @@ function countdownStart() {
 function countdownStop() {
 
     clearInterval(timer);
-
+    timer = null;
 }
 
 function countdownReset() {
 
     clearInterval(timer);
+    timer = null;
 
     minute = 0;
     second = 0;

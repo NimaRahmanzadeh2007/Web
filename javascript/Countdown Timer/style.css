@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#timeText {
+    margin: 0;
+    font-size: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+#input{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    margin: 10px 0 40px 0;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    outline: none;
+}
+
+.divOfText {
+    margin: 100px 0 100px;
+}
+
+h1 {
+    font-size: 90px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.buttons {
+    margin: 0 20px 0 20px;
+    font-size: 50px;
+    padding: 20px 40px;
+    border-radius: 30px;
+    font-weight: bold;
+
+
+    transition: .1s;
+}
+
+.buttons:hover {
+    transform: scale(1.1);
+    color: white;
+    background-color: black;
+}
+
+#reset:active {
+    transform: scale(0.9);
+    background-color: rgb(204, 133, 0);
+    color: black;
+}
+
+#start:active {
+    transform: scale(0.9);
+    background-color: rgb(46, 196, 0);
+    color: black;
+}
+
+#stop:active {
+    transform: scale(0.9);
+    background-color: rgb(185, 0, 0);
+    color: white;
+}
