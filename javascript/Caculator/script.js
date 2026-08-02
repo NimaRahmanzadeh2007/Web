@@ -15,6 +15,12 @@ buttons.forEach(function (button) {
             currentInput = result;
             return
         }
+        else if(value == "C"){
+            const result = 0;
+            display.innerText = result;
+            currentInput = "";
+            return;
+        }
 
         currentInput += value;
         display.innerText = currentInput;
