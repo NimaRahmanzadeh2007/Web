@@ -12,6 +12,8 @@ buttons.forEach(function (button) {
 
         const value = event.target.innerText;
 
+        const isNumber = !isNaN(value);
+
 
         if (value == "C") {
             expression = "";
@@ -30,14 +32,20 @@ buttons.forEach(function (button) {
             catch {
                 expression = "";
                 display.innerText = "Err";
+                calculated = false;
+                return;
             }
         }
 
+
+        if (calculated && (isNumber || value == ".")) {
+            expression = "";
+            calculated = false;
+        }
+
+
         expression += value;
         display.innerText = expression;
-
-
-
 
 
 
