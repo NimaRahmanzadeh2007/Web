@@ -1,0 +1,28 @@
+#container {
+    margin: 10px 0 0 20px;
+    padding: 20px 3% 5px 30px;
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 20px;
+    width: 270px;
+    height: 180px;
+
+    background-color: rgb(255, 232, 208);
+
+    padding: 10px 10px 10px 40px;
+    margin: 10px 0 20px 0;
+
+    box-shadow: 10px 10px 10px black;
+
+    transition: .2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.54)
+}
