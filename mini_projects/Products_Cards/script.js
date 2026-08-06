@@ -30,11 +30,13 @@ async function getProducts() {
             const containerOfTitle = document.createElement("div");
             const containerOfPrice = document.createElement("div");
             const containerOfCategory = document.createElement("div");
-            
+            const containerOfTexts = document.createElement("div");
+
             containerOfImage.classList.add("imageContainer");
             containerOfTitle.classList.add("title");
             containerOfPrice.classList.add("textContainer");
             containerOfCategory.classList.add("textContainer");
+            containerOfTexts.classList.add("allTexts");
 
             priceTitle.textContent = "Price: ";
             categoryTitle.textContent = "Category: ";
@@ -49,7 +51,7 @@ async function getProducts() {
 
             productImage.src = product.image;
             title.textContent = product.title;
-            price.textContent = product.price;
+            price.textContent = `$${product.price}`;
             category.textContent = product.category;
 
             containerOfImage.appendChild(productImage);
@@ -62,10 +64,12 @@ async function getProducts() {
             containerOfCategory.appendChild(categoryTitle);
             containerOfCategory.appendChild(category);
 
+            containerOfTexts.appendChild(containerOfTitle);
+            containerOfTexts.appendChild(containerOfPrice);
+            containerOfTexts.appendChild(containerOfCategory);
+
             productCard.appendChild(containerOfImage);
-            productCard.appendChild(containerOfTitle);
-            productCard.appendChild(containerOfPrice);
-            productCard.appendChild(containerOfCategory);
+            productCard.appendChild(containerOfTexts);
 
             container.appendChild(productCard);
 
