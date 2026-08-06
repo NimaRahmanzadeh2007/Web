@@ -38,17 +38,17 @@ buttons.forEach(function (button) {
         }
 
 
-        if (calculated && (isNumber || value == ".")) {
-            expression = "";
+        if (calculated) {
+
+            if (isNumber || value == ".") {
+                expression = "";
+            }
+
             calculated = false;
         }
 
-
         expression += value;
         display.innerText = expression;
-
-
-
     });
 
 });
