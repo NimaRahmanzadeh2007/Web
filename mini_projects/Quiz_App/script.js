@@ -110,54 +110,7 @@ const questions = [
     }
 ];
 
-
+let score = 0;
 let questionIndex = 0;
-let scoreCount = 0;
 
-
-const questionNumber = document.getElementById("questionNumber");
-const questionText = document.getElementById("question");
-const answersContainer = document.getElementById("answers");
-const score = document.getElementById("score");
 const nextBtn = document.getElementById("nextBtn");
-
-
-function showQuestion() {
-
-    const currentQuestion = questions[questionIndex];
-
-    questionNumber.innerText =
-        `Question ${questionIndex + 1} of ${questions.length}`;
-
-    questionText.innerText = currentQuestion.question;
-
-    answersContainer.innerHTML = "";
-
-    currentQuestion.answers.forEach(function (answer) {
-
-        const answerBtn = document.createElement("button");
-
-        answerBtn.classList.add("answerBtn");
-
-        answerBtn.innerText = answer;
-
-        answersContainer.appendChild(answerBtn);
-
-    });
-}
-
-
-nextBtn.addEventListener("click", function () {
-
-    questionIndex++;
-
-    if (questionIndex < questions.length) {
-
-        showQuestion();
-
-    }
-
-});
-
-
-showQuestion();
