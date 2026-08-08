@@ -19,30 +19,55 @@ searchBtn.addEventListener("click", function () {
 
 async function getLocation(location) {
 
-    const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1&language=en&format=json`);
+    try {
+        const response = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1&language=en&format=json`);
 
-    const data = await response.json();
+        if (!response.ok) {
+            cityName.textContent = "-";
+            throw new Error("Failed to fetch");
+        }
 
-    const latitude = data.results[0].latitude;
-    const longitude = data.results[0].longitude;
+        const data = await response.json();
 
-    showWeather(latitude, longitude);
+        if (!data.results || data.results.length === 0) {
+            cityName.textContent = "-";
+            throw new Error("City not found");
+        }
+
+        const latitude = data.results[0].latitude;
+        const longitude = data.results[0].longitude;
+
+        await showWeather(latitude, longitude);
+    }
+    catch (error) {
+        cityName.textContent = "-";
+        window.alert(error.message);
+    }
 }
 
 async function showWeather(latitude, longitude) {
 
-    const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,relative_humidity_2m,weather_code&timezone=auto`);
+    try {
+        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,wind_speed_10m,relative_humidity_2m,weather_code&timezone=auto`);
 
-    const data = await response.json();
+        if (!response.ok) {
+            throw new Error("Failed to fetch");
+        }
 
-    temperature.textContent = data.current.temperature_2m + data.current_units.temperature_2m;
-    wind.textContent = data.current.wind_speed_10m + " " + data.current_units.wind_speed_10m;
-    humidity.textContent = data.current.relative_humidity_2m + data.current_units.relative_humidity_2m;
+        const data = await response.json();
 
-    const weatherCode = data.current.weather_code;
+        temperature.textContent = data.current.temperature_2m + data.current_units.temperature_2m;
+        wind.textContent = data.current.wind_speed_10m + " " + data.current_units.wind_speed_10m;
+        humidity.textContent = data.current.relative_humidity_2m + data.current_units.relative_humidity_2m;
 
-    getWeatherStatus(weatherCode);
+        const weatherCode = data.current.weather_code;
 
+        getWeatherStatus(weatherCode);
+
+    }
+    catch (error) {
+        window.alert(error.message);
+    }
 
 }
 
