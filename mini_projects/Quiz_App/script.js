@@ -110,7 +110,3 @@ const questions = [
     }
 ];
 
-let score = 0;
-let questionIndex = 0;
-
-const nextBtn = document.getElementById("nextBtn");
