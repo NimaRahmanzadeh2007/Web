@@ -44,7 +44,12 @@ body {
     cursor: pointer;
 }
 
-.questionText {
+.optionDiv.selected {
+    border-color: rgb(0, 102, 255);
+    background-color: rgb(129, 188, 255);
+}
+
+.questionTextDiv {
     margin: 10px 0 60px;
     font-size: 30px;
 }
@@ -132,6 +137,11 @@ body.dark .optionDiv:hover {
     background-color: #383c47;
 }
 
+body.dark .optionDiv.selected {
+    border-color: rgb(0, 102, 255);
+    background-color: rgb(0, 63, 136);
+}
+
 body.dark #optionsContainer {
     background-color: #22252d;
 }
@@ -144,7 +154,6 @@ body.dark #changeThemeBtn {
 body,
 #questionWindow,
 .optionDiv,
-#optionsContainer,
-.optionDiv {
+#optionsContainer {
     transition: .4s;
 }
