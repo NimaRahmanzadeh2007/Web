@@ -148,15 +148,26 @@ function showQuestion() {
 
 function checkAnswer() {
 
+    if (selectedOption === null) {
+        return;
+    }
+
     const currentQuestion = questions[questionCount];
 
-    if (selectedOption != "" && selectedOption === currentQuestion.correct) {
+    if (selectedOption === currentQuestion.correct) {
         score++;
     }
 
     scoreText.innerText = `Score: ${score}`;
 
     questionCount++;
+
+    if (questionCount >= questions.length) {
+        alert(`Quiz finished! Your score: ${score}/${questions.length}`);
+        return;
+    }
+
+    selectedOption = null;
 
     for (let i = 0; i < optionDiv.length; i++) {
         optionDiv[i].classList.remove("selected");
@@ -165,6 +176,7 @@ function checkAnswer() {
     showQuestion();
 
 }
+
 
 showQuestion();
 
