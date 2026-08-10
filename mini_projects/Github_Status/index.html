@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="A modern GitHub public profile intelligence dashboard."
+    >
+
+    <meta
+        name="theme-color"
+        content="#08090d"
+    >
+
+    <title>GitStatus — GitHub Profile Explorer</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    >
+
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Background decoration -->
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <!-- =========================================
+         NAVBAR
+    ========================================== -->
+
+    <header class="topbar">
+
+        <a
+            href="#"
+            class="brand"
+            aria-label="GitStatus home"
+        >
+
+            <span class="brand-mark">
+                <i class="fa-brands fa-github"></i>
+            </span>
+
+            <span>
+                Git<span>Status</span>
+            </span>
+
+        </a>
+
+        <div class="top-actions">
+
+            <span
+                class="api-status"
+                id="apiStatus"
+            >
+                <span class="status-dot"></span>
+                <span>API ready</span>
+            </span>
+
+            <button
+                class="icon-btn"
+                id="themeToggle"
+                type="button"
+                aria-label="Toggle theme"
+                title="Toggle theme"
+            >
+                <i class="fa-solid fa-moon"></i>
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <!-- =========================================
+             HERO
+        ========================================== -->
+
+        <section class="hero">
+
+            <div class="hero-copy reveal">
+
+                <span class="eyebrow">
+                    <i class="fa-solid fa-chart-line"></i>
+                    GitHub public profile intelligence
+                </span>
+
+                <h1>
+                    Understand a GitHub profile
+                    <span>at a glance.</span>
+                </h1>
+
+                <p>
+                    Enter any public GitHub username to explore their
+                    profile, repository portfolio, developer statistics,
+                    and recent public activity.
+                </p>
+
+            </div>
+
+
+            <!-- Search -->
+
+            <form
+                class="search-panel reveal"
+                id="searchForm"
+                autocomplete="off"
+            >
+
+                <div class="search-field">
+
+                    <i class="fa-brands fa-github"></i>
+
+                    <input
+                        id="usernameInput"
+                        type="text"
+                        placeholder="Enter GitHub username…"
+                        aria-label="GitHub username"
+                        maxlength="39"
+                        required
+                    >
+
+                    <button
+                        class="clear-btn"
+                        id="clearSearch"
+                        type="button"
+                        aria-label="Clear username"
+                        hidden
+                    >
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+
+                </div>
+
+
+                <button
+                    class="search-btn"
+                    type="submit"
+                >
+
+                    <span>
+                        Analyze profile
+                    </span>
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </button>
+
+            </form>
+
+
+            <!-- Quick searches -->
+
+            <div class="quick-search reveal">
+
+                <span>Try:</span>
+
+                <button
+                    type="button"
+                    data-example="torvalds"
+                >
+                    torvalds
+                </button>
+
+                <button
+                    type="button"
+                    data-example="octocat"
+                >
+                    octocat
+                </button>
+
+                <button
+                    type="button"
+                    data-example="github"
+                >
+                    github
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             ERROR
+        ========================================== -->
+
+        <section
+            class="error-card"
+            id="errorCard"
+            hidden
+        >
+
+            <div class="error-icon">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+            </div>
+
+            <div>
+
+                <strong id="errorTitle">
+                    Profile unavailable
+                </strong>
+
+                <p id="errorMessage">
+                    Something went wrong while fetching
+                    the GitHub profile.
+                </p>
+
+            </div>
+
+            <button
+                class="text-btn"
+                id="retryBtn"
+                type="button"
+            >
+                Try again
+            </button>
+
+        </section>
+
+
+        <!-- =========================================
+             LOADING
+        ========================================== -->
+
+        <section
+            class="loading-state"
+            id="loadingState"
+            hidden
+            aria-live="polite"
+        >
+
+            <div class="loader-ring"></div>
+
+            <h2>
+                Analyzing profile
+            </h2>
+
+            <p id="loadingText">
+                Fetching public GitHub data…
+            </p>
+
+        </section>
+
+
+        <!-- =========================================
+             DASHBOARD
+        ========================================== -->
+
+        <section
+            class="dashboard"
+            id="dashboard"
+            hidden
+        >
+
+            <!-- PROFILE -->
+
+            <div class="profile-header glass reveal">
+
+                <div class="profile-main">
+
+                    <div class="avatar-wrap">
+
+                        <img
+                            id="avatar"
+                            src=""
+                            alt=""
+                            class="avatar"
+                        >
+
+                        <span
+                            class="online-badge"
+                            title="Public GitHub account"
+                        ></span>
+
+                    </div>
+
+
+                    <div class="profile-identity">
+
+                        <div class="name-row">
+
+                            <h2 id="profileName">
+                                —
+                            </h2>
+
+                            <a
+                                id="profileLink"
+                                class="external-link"
+                                href="#"
+                                target="_blank"
+                                rel="noopener"
+                                aria-label="Open GitHub profile"
+                            >
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+
+                        </div>
+
+
+                        <p
+                            class="username"
+                            id="profileUsername"
+                        >
+                            @username
+                        </p>
+
+
+                        <p
+                            class="bio"
+                            id="profileBio"
+                        >
+                            —
+                        </p>
+
+
+                        <div class="meta-list">
+
+                            <span
+                                id="profileLocation"
+                                hidden
+                            >
+                                <i class="fa-solid fa-location-dot"></i>
+                                <span></span>
+                            </span>
+
+
+                            <a
+                                id="profileBlog"
+                                hidden
+                                target="_blank"
+                                rel="noopener"
+                            >
+                                <i class="fa-solid fa-link"></i>
+                                <span></span>
+                            </a>
+
+
+                            <span
+                                id="profileCompany"
+                                hidden
+                            >
+                                <i class="fa-solid fa-building"></i>
+                                <span></span>
+                            </span>
+
+
+                            <span>
+
+                                <i class="fa-regular fa-calendar"></i>
+
+                                Joined
+
+                                <strong id="profileJoined">
+                                    —
+                                </strong>
+
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profile-actions">
+
+                    <a
+                        class="outline-btn"
+                        id="profileButton"
+                        href="#"
+                        target="_blank"
+                        rel="noopener"
+                    >
+
+                        <i class="fa-brands fa-github"></i>
+
+                        View on GitHub
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================================
+                 STAT CARDS
+            ========================================== -->
+
+            <div class="stats-grid">
+
+                <article class="stat-card glass reveal">
+
+                    <div class="stat-icon purple">
+                        <i class="fa-solid fa-code-branch"></i>
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Repositories
+                        </span>
+
+                        <strong id="statRepos">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card glass reveal">
+
+                    <div class="stat-icon gold">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Total stars
+                        </span>
+
+                        <strong id="statStars">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card glass reveal">
+
+                    <div class="stat-icon blue">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Followers
+                        </span>
+
+                        <strong id="statFollowers">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card glass reveal">
+
+                    <div class="stat-icon green">
+                        <i class="fa-solid fa-user-plus"></i>
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Following
+                        </span>
+
+                        <strong id="statFollowing">
+                            0
+                        </strong>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- =========================================
+                 TWO-COLUMN CONTENT
+            ========================================== -->
+
+            <div class="content-grid">
+
+
+                <!-- STATISTICS -->
+
+                <section class="panel glass reveal">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                Developer profile
+                            </span>
+
+                            <h3>
+                                GitHub statistics
+                            </h3>
+
+                        </div>
+
+                        <span class="live-label">
+
+                            <span></span>
+
+                            Live data
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="stats-list">
+
+                        <div class="stat-line">
+
+                            <div class="line-label">
+
+                                <i class="fa-solid fa-code"></i>
+
+                                <span>
+                                    Top language
+                                </span>
+
+                            </div>
+
+                            <strong id="topLanguage">
+                                —
+                            </strong>
+
+                        </div>
+
+
+                        <div class="stat-line">
+
+                            <div class="line-label">
+
+                                <i class="fa-solid fa-code-commit"></i>
+
+                                <span>
+                                    Recent public events
+                                </span>
+
+                            </div>
+
+                            <strong id="eventCount">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="stat-line">
+
+                            <div class="line-label">
+
+                                <i class="fa-solid fa-code-fork"></i>
+
+                                <span>
+                                    Total forks received
+                                </span>
+
+                            </div>
+
+                            <strong id="statForks">
+                                0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="stat-line">
+
+                            <div class="line-label">
+
+                                <i class="fa-solid fa-box-archive"></i>
+
+                                <span>
+                                    Archived repositories
+                                </span>
+
+                            </div>
+
+                            <strong id="archivedRepos">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LANGUAGE DISTRIBUTION -->
+
+                    <div class="language-section">
+
+                        <div class="mini-heading">
+
+                            <span>
+                                Language distribution
+                            </span>
+
+                            <span id="languageTotal">
+                                —
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="language-bars"
+                            id="languageBars"
+                        ></div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- ACTIVITY -->
+
+                <section class="panel glass reveal">
+
+                    <div class="section-heading">
+
+                        <div>
+
+                            <span class="section-kicker">
+                                Timeline
+                            </span>
+
+                            <h3>
+                                Recent activity
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div
+                        class="activity-list"
+                        id="activityList"
+                    ></div>
+
+                </section>
+
+            </div>
+
+
+            <!-- =========================================
+                 REPOSITORIES
+            ========================================== -->
+
+            <section class="panel glass reveal">
+
+                <div class="section-heading repo-heading">
+
+                    <div>
+
+                        <span class="section-kicker">
+                            Public portfolio
+                        </span>
+
+                        <h3>
+                            Repositories
+                        </h3>
+
+                    </div>
+
+
+                    <div class="repo-controls">
+
+                        <label class="select-wrap">
+
+                            <i class="fa-solid fa-arrow-down-wide-short"></i>
+
+                            <select
+                                id="repoSort"
+                                aria-label="Sort repositories"
+                            >
+
+                                <option value="stars">
+                                    Most stars
+                                </option>
+
+                                <option value="updated">
+                                    Recently updated
+                                </option>
+
+                                <option value="forks">
+                                    Most forks
+                                </option>
+
+                                <option value="name">
+                                    Name
+                                </option>
+
+                            </select>
+
+                        </label>
+
+
+                        <span id="repoCountLabel">
+                            0 public repos
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="repo-grid"
+                    id="repoGrid"
+                ></div>
+
+
+                <button
+                    class="load-more"
+                    id="loadMore"
+                    type="button"
+                    hidden
+                >
+                    Show more repositories
+                </button>
+
+            </section>
+
+
+            <!-- FOOTER -->
+
+            <footer class="dashboard-footer">
+
+                <span>
+                    Data sourced from GitHub's public REST API.
+                </span>
+
+                <span id="lastUpdated">
+                    Updated just now
+                </span>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         REPOSITORY TEMPLATE
+    ========================================== -->
+
+    <template id="repoTemplate">
+
+        <article class="repo-card">
+
+            <div class="repo-top">
+
+                <div class="repo-title-wrap">
+
+                    <i class="fa-regular fa-folder-open"></i>
+
+                    <a
+                        class="repo-name"
+                        target="_blank"
+                        rel="noopener"
+                    ></a>
+
+                </div>
+
+                <span class="repo-visibility">
+                    Public
+                </span>
+
+            </div>
+
+
+            <p class="repo-description"></p>
+
+
+            <div class="topic-list"></div>
+
+
+            <div class="repo-footer">
+
+                <span class="repo-language">
+
+                    <i class="language-dot"></i>
+
+                    <span></span>
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-solid fa-star"></i>
+
+                    <span class="repo-stars"></span>
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-solid fa-code-fork"></i>
+
+                    <span class="repo-forks"></span>
+
+                </span>
+
+
+                <span class="repo-updated"></span>
+
+            </div>
+
+        </article>
+
+    </template>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
